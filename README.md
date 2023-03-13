@@ -7,13 +7,13 @@ A TicTacToe Game made with SwiftUI
 </div>
 
 ## 100% Offline!
-You can play versus your friends or versus the computer
+You can play versus your friends or versus the computer without internet connection.
 
 ## What versions does this support?
 Any version on iOS 14.0+
 
 ## How can I download this?
-Clone the project and open in XCode, and build this in your iPhone.
+Clone the project and open in Xcode, and build this in your iPhone.
 ```
 The .ipa file will be uploaded on Releases soon
 ```
