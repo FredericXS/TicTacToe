@@ -13,10 +13,9 @@ You can play versus your friends or versus the computer without internet connect
 Any version on iOS 14.0+
 
 ## How can I download this?
-Clone the project and open in Xcode, and build this in your iPhone.
-```
-The .ipa file will be uploaded on Releases soon
-```
+* Download the .ipa file on Releases and install on your iPhone.  
+OR
+* Clone the project and open in Xcode, and build this in your iPhone.
 
 ## Coming soon
 * Score system
