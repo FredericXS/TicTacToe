@@ -11,7 +11,16 @@ import SwiftUI
 struct TicTacToeApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            TabView {
+                GameVersusFriend()
+                    .tabItem {
+                        Label("VS Friend", systemImage: "person.2.fill")
+                    }
+                GameVersusAIView()
+                    .tabItem {
+                        Label("VS Computer", systemImage: "display")
+                    }
+            }
         }
     }
 }

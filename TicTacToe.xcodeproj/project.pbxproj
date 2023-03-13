@@ -8,17 +8,31 @@
 
 /* Begin PBXBuildFile section */
 		5F27EC4429BE818200A3E8CC /* TicTacToeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F27EC4329BE818200A3E8CC /* TicTacToeApp.swift */; };
-		5F27EC4629BE818200A3E8CC /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F27EC4529BE818200A3E8CC /* ContentView.swift */; };
+		5F27EC4629BE818200A3E8CC /* GameVersusAIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F27EC4529BE818200A3E8CC /* GameVersusAIView.swift */; };
 		5F27EC4829BE819E00A3E8CC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5F27EC4729BE819E00A3E8CC /* Assets.xcassets */; };
 		5F27EC4B29BE819E00A3E8CC /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5F27EC4A29BE819E00A3E8CC /* Preview Assets.xcassets */; };
+		5F970CDE29BE9BD0002D3758 /* AlertsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F970CDD29BE9BCF002D3758 /* AlertsView.swift */; };
+		5FE2A60C29BEB4E8007FED0A /* VersusAIViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FE2A60B29BEB4E8007FED0A /* VersusAIViewModel.swift */; };
+		5FE2A60E29BEB8E6007FED0A /* VersusAIModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FE2A60D29BEB8E6007FED0A /* VersusAIModel.swift */; };
+		5FE2A61129BEBF1D007FED0A /* DesignView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FE2A61029BEBF1D007FED0A /* DesignView.swift */; };
+		5FE2A61329BEC1EA007FED0A /* GameVersusFriend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FE2A61229BEC1EA007FED0A /* GameVersusFriend.swift */; };
+		5FE2A61729BEC39B007FED0A /* VersusFriendModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FE2A61629BEC39B007FED0A /* VersusFriendModel.swift */; };
+		5FE2A61929BEC402007FED0A /* VersusFriendViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FE2A61829BEC402007FED0A /* VersusFriendViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		5F27EC4029BE818200A3E8CC /* TicTacToe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TicTacToe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5F27EC4329BE818200A3E8CC /* TicTacToeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicTacToeApp.swift; sourceTree = "<group>"; };
-		5F27EC4529BE818200A3E8CC /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		5F27EC4529BE818200A3E8CC /* GameVersusAIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameVersusAIView.swift; sourceTree = "<group>"; };
 		5F27EC4729BE819E00A3E8CC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5F27EC4A29BE819E00A3E8CC /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		5F970CDD29BE9BCF002D3758 /* AlertsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertsView.swift; sourceTree = "<group>"; };
+		5FE2A60B29BEB4E8007FED0A /* VersusAIViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersusAIViewModel.swift; sourceTree = "<group>"; };
+		5FE2A60D29BEB8E6007FED0A /* VersusAIModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersusAIModel.swift; sourceTree = "<group>"; };
+		5FE2A61029BEBF1D007FED0A /* DesignView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignView.swift; sourceTree = "<group>"; };
+		5FE2A61229BEC1EA007FED0A /* GameVersusFriend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameVersusFriend.swift; sourceTree = "<group>"; };
+		5FE2A61629BEC39B007FED0A /* VersusFriendModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersusFriendModel.swift; sourceTree = "<group>"; };
+		5FE2A61829BEC402007FED0A /* VersusFriendViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersusFriendViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,8 +65,10 @@
 		5F27EC4229BE818200A3E8CC /* TicTacToe */ = {
 			isa = PBXGroup;
 			children = (
+				5FE2A61529BEC24A007FED0A /* Model */,
+				5FE2A61429BEC23C007FED0A /* ViewModel */,
+				5FE2A60F29BEBECB007FED0A /* View */,
 				5F27EC4329BE818200A3E8CC /* TicTacToeApp.swift */,
-				5F27EC4529BE818200A3E8CC /* ContentView.swift */,
 				5F27EC4729BE819E00A3E8CC /* Assets.xcassets */,
 				5F27EC4929BE819E00A3E8CC /* Preview Content */,
 			);
@@ -65,6 +81,35 @@
 				5F27EC4A29BE819E00A3E8CC /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		5FE2A60F29BEBECB007FED0A /* View */ = {
+			isa = PBXGroup;
+			children = (
+				5F970CDD29BE9BCF002D3758 /* AlertsView.swift */,
+				5FE2A61029BEBF1D007FED0A /* DesignView.swift */,
+				5F27EC4529BE818200A3E8CC /* GameVersusAIView.swift */,
+				5FE2A61229BEC1EA007FED0A /* GameVersusFriend.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		5FE2A61429BEC23C007FED0A /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				5FE2A60B29BEB4E8007FED0A /* VersusAIViewModel.swift */,
+				5FE2A61829BEC402007FED0A /* VersusFriendViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		5FE2A61529BEC24A007FED0A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				5FE2A60D29BEB8E6007FED0A /* VersusAIModel.swift */,
+				5FE2A61629BEC39B007FED0A /* VersusFriendModel.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,7 +182,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5F27EC4629BE818200A3E8CC /* ContentView.swift in Sources */,
+				5FE2A60E29BEB8E6007FED0A /* VersusAIModel.swift in Sources */,
+				5FE2A60C29BEB4E8007FED0A /* VersusAIViewModel.swift in Sources */,
+				5FE2A61929BEC402007FED0A /* VersusFriendViewModel.swift in Sources */,
+				5FE2A61129BEBF1D007FED0A /* DesignView.swift in Sources */,
+				5FE2A61729BEC39B007FED0A /* VersusFriendModel.swift in Sources */,
+				5FE2A61329BEC1EA007FED0A /* GameVersusFriend.swift in Sources */,
+				5F27EC4629BE818200A3E8CC /* GameVersusAIView.swift in Sources */,
+				5F970CDE29BE9BD0002D3758 /* AlertsView.swift in Sources */,
 				5F27EC4429BE818200A3E8CC /* TicTacToeApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -270,11 +322,14 @@
 				DEVELOPMENT_TEAM = JL34VC68DN;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "Tic Tac Toe";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.strategy-games";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -299,11 +354,14 @@
 				DEVELOPMENT_TEAM = JL34VC68DN;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "Tic Tac Toe";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.strategy-games";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
