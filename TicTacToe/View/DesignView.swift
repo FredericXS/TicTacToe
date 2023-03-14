@@ -13,7 +13,7 @@ struct GameSquareView: View {
     
     var body: some View {
         Circle()
-            .foregroundColor(color!).opacity(0.5)
+            .foregroundColor(color!.opacity(0.75))
             .frame(width: proxy.size.width / 3 - 15, height: proxy.size.width / 3 - 15)
     }
 }

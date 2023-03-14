@@ -18,7 +18,7 @@ struct TicTacToeApp: App {
                     }
                 GameVersusAIView()
                     .tabItem {
-                        Label("VS Computer", systemImage: "display")
+                        Label("VS Computer", systemImage: "bonjour")
                     }
             }
         }

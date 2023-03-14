@@ -17,7 +17,17 @@ struct GameVersusAIView: View {
                     .font(.largeTitle)
                     .bold()
                     .multilineTextAlignment(.center)
-                Spacer()
+                HStack {
+                    Text("Choose the difficult: ")
+                        .font(.title3)
+                    Picker(selection: $viewModel.selectedLevelIndex, label: Text("")) {
+                        ForEach(0..<viewModel.levels.count) {
+                            Text(viewModel.levels[$0])
+                                }
+                             }
+                    .disabled(viewModel.isGameStarted)
+                }
+                .padding(.vertical, 30)
                 LazyVGrid(columns: viewModel.columns, spacing: 5) {
                     ForEach(0..<9) { i in
                         ZStack {

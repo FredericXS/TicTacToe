@@ -9,10 +9,13 @@ import SwiftUI
 
 final class VersusAIViewModel: ObservableObject {
     let columns: [GridItem] = [GridItem(.flexible()), GridItem(.flexible()), GridItem(.flexible())]
-        
+    let levels: [String] = ["Easy", "Medium", "Hard"]
+    
     @Published var moves: [VersusAIModel.Move?] = Array(repeating: nil, count: 9)
     @Published var isGameboardDisabled = false
     @Published var alertItem: AlertItem?
+    @Published var selectedLevelIndex = 0
+    @Published var isGameStarted = false
     
     func processPlayerMove(for position: Int) {
         if isSquareOccupied(in: moves, forIndex: position) { return }
@@ -29,6 +32,7 @@ final class VersusAIViewModel: ObservableObject {
         }
         
         isGameboardDisabled = true
+        isGameStarted = true
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { [self] in
             let computerPosition = determineComputerMovePosistion(in: moves)
@@ -55,41 +59,67 @@ final class VersusAIViewModel: ObservableObject {
         // Setting Win conditions
         let winPatterns: Set<Set<Int>> = [[0, 1, 2], [3, 4, 5], [6, 7, 8], [0, 3, 6], [1, 4, 7], [2, 5, 8], [0, 4, 8], [2, 4, 6]]
         
-        // Win variables
-        let computerMoves = moves.compactMap { $0 }.filter { $0.player == .computer }
-        let computerPositions = Set(computerMoves.map { $0.boardIndex })
+        var movePosition: Int = 0
         
-        // Block variables
-        let humanMoves = moves.compactMap { $0 }.filter { $0.player == .human }
-        let humanPositions = Set(humanMoves.map { $0.boardIndex })
-        
-        for pattern in winPatterns {
-            let winPositions = pattern.subtracting(computerPositions)
-            let blockPositions = pattern.subtracting(humanPositions)
+        func easyMode() -> Int {
+            // Pick a random square
+            var movePosition = Int.random(in: 0..<9)
             
-            if winPositions.count == 1 {
-                // If AI can win, then win
-                let isAvailable = !isSquareOccupied(in: moves, forIndex: winPositions.first!)
-                if isAvailable { return winPositions.first! }
-                
-            } else if blockPositions.count == 1 {
-                // If AI can't win, then block
-                let isBlockable = !isSquareOccupied(in: moves, forIndex: blockPositions.first!)
-                if isBlockable { return blockPositions.first! }
+            while isSquareOccupied(in: moves, forIndex: movePosition) {
+                movePosition = Int.random(in: 0..<9)
             }
+            
+            return movePosition
         }
         
-        // If AI can't block, then take middle square
-        let centerSquare = 4
-        if !isSquareOccupied(in: moves, forIndex: centerSquare) {
-            return centerSquare
+        func mediumMode() -> Int {
+            // Try pick the middle square
+            let centerSquare = 4
+            if !isSquareOccupied(in: moves, forIndex: centerSquare) {
+                return centerSquare
+            }
+            
+            // If AI can't pick middle square, then pick a random square
+            return easyMode()
         }
         
-        // If AI can't take middle square, take random available square
-        var movePosition = Int.random(in: 0..<9)
+        func hardMode() -> Int {
+            // Win variables
+            let computerMoves = moves.compactMap { $0 }.filter { $0.player == .computer }
+            let computerPositions = Set(computerMoves.map { $0.boardIndex })
+            
+            // Block variables
+            let humanMoves = moves.compactMap { $0 }.filter { $0.player == .human }
+            let humanPositions = Set(humanMoves.map { $0.boardIndex })
+            
+            for pattern in winPatterns {
+                let winPositions = pattern.subtracting(computerPositions)
+                let blockPositions = pattern.subtracting(humanPositions)
+                
+                if winPositions.count == 1 {
+                    // If AI can win, then win
+                    let isAvailable = !isSquareOccupied(in: moves, forIndex: winPositions.first!)
+                    if isAvailable { return winPositions.first! }
+                } else if blockPositions.count == 1 {
+                    // If AI can't win, then block
+                    let isBlockable = !isSquareOccupied(in: moves, forIndex: blockPositions.first!)
+                    if isBlockable { return blockPositions.first! }
+                }
+            }
+            
+            // If AI can't win and can't block, then try pick middle square
+            return mediumMode()
+        }
         
-        while isSquareOccupied(in: moves, forIndex: movePosition) {
-            movePosition = Int.random(in: 0..<9)
+        switch(selectedLevelIndex) {
+            case 0:
+                movePosition = easyMode()
+            case 1:
+                movePosition = mediumMode()
+            case 2:
+                movePosition = hardMode()
+            default:
+                print("Something is wrong")
         }
         
         return movePosition
@@ -115,5 +145,6 @@ final class VersusAIViewModel: ObservableObject {
     
     func resetGame() {
         moves = Array(repeating: nil, count: 9)
+        isGameStarted = false
     }
 }
