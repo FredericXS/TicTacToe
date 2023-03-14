@@ -19,4 +19,4 @@ OR
 
 ## Coming soon
 * Score system
-* Level options for computer
+* ~Level options for computer~ - Added!
