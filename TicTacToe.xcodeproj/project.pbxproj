@@ -12,6 +12,7 @@
 		5F27EC4829BE819E00A3E8CC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5F27EC4729BE819E00A3E8CC /* Assets.xcassets */; };
 		5F27EC4B29BE819E00A3E8CC /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5F27EC4A29BE819E00A3E8CC /* Preview Assets.xcassets */; };
 		5F970CDE29BE9BD0002D3758 /* AlertsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F970CDD29BE9BCF002D3758 /* AlertsView.swift */; };
+		5FBDEC0329C62E5E001DE90E /* GameLogicModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FBDEC0229C62E5E001DE90E /* GameLogicModel.swift */; };
 		5FE2A60C29BEB4E8007FED0A /* VersusAIViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FE2A60B29BEB4E8007FED0A /* VersusAIViewModel.swift */; };
 		5FE2A60E29BEB8E6007FED0A /* VersusAIModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FE2A60D29BEB8E6007FED0A /* VersusAIModel.swift */; };
 		5FE2A61129BEBF1D007FED0A /* DesignView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FE2A61029BEBF1D007FED0A /* DesignView.swift */; };
@@ -27,6 +28,7 @@
 		5F27EC4729BE819E00A3E8CC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5F27EC4A29BE819E00A3E8CC /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		5F970CDD29BE9BCF002D3758 /* AlertsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertsView.swift; sourceTree = "<group>"; };
+		5FBDEC0229C62E5E001DE90E /* GameLogicModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameLogicModel.swift; sourceTree = "<group>"; };
 		5FE2A60B29BEB4E8007FED0A /* VersusAIViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersusAIViewModel.swift; sourceTree = "<group>"; };
 		5FE2A60D29BEB8E6007FED0A /* VersusAIModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersusAIModel.swift; sourceTree = "<group>"; };
 		5FE2A61029BEBF1D007FED0A /* DesignView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignView.swift; sourceTree = "<group>"; };
@@ -108,6 +110,7 @@
 			children = (
 				5FE2A60D29BEB8E6007FED0A /* VersusAIModel.swift */,
 				5FE2A61629BEC39B007FED0A /* VersusFriendModel.swift */,
+				5FBDEC0229C62E5E001DE90E /* GameLogicModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -186,6 +189,7 @@
 				5FE2A60C29BEB4E8007FED0A /* VersusAIViewModel.swift in Sources */,
 				5FE2A61929BEC402007FED0A /* VersusFriendViewModel.swift in Sources */,
 				5FE2A61129BEBF1D007FED0A /* DesignView.swift in Sources */,
+				5FBDEC0329C62E5E001DE90E /* GameLogicModel.swift in Sources */,
 				5FE2A61729BEC39B007FED0A /* VersusFriendModel.swift in Sources */,
 				5FE2A61329BEC1EA007FED0A /* GameVersusFriend.swift in Sources */,
 				5F27EC4629BE818200A3E8CC /* GameVersusAIView.swift in Sources */,
@@ -334,7 +338,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1;
+				MARKETING_VERSION = 1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ashborn.TicTacToe;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -366,7 +370,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1;
+				MARKETING_VERSION = 1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ashborn.TicTacToe;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;

@@ -9,7 +9,7 @@ import SwiftUI
 
 final class VersusAIViewModel: ObservableObject {
     let columns: [GridItem] = [GridItem(.flexible()), GridItem(.flexible()), GridItem(.flexible())]
-    let levels: [String] = ["Easy", "Medium", "Hard"]
+    let levels: [String] = ["Easy", "Medium", "Hard", "Impossible"]
     
     @Published var moves: [VersusAIModel.Move?] = Array(repeating: nil, count: 9)
     @Published var isGameboardDisabled = false
@@ -56,59 +56,61 @@ final class VersusAIViewModel: ObservableObject {
     }
     
     func determineComputerMovePosistion(in moves: [VersusAIModel.Move?]) -> Int {
-        // Setting Win conditions
+        let logicModel = GameLogicModel(currentMove: moves)
         let winPatterns: Set<Set<Int>> = [[0, 1, 2], [3, 4, 5], [6, 7, 8], [0, 3, 6], [1, 4, 7], [2, 5, 8], [0, 4, 8], [2, 4, 6]]
         
         var movePosition: Int = 0
         
         func easyMode() -> Int {
             // Pick a random square
-            var movePosition = Int.random(in: 0..<9)
-            
-            while isSquareOccupied(in: moves, forIndex: movePosition) {
-                movePosition = Int.random(in: 0..<9)
-            }
-            
-            return movePosition
+            logicModel.pickRandomSquare()
         }
         
         func mediumMode() -> Int {
-            // Try pick the middle square
-            let centerSquare = 4
-            if !isSquareOccupied(in: moves, forIndex: centerSquare) {
-                return centerSquare
-            }
+            // Try block possible player win
+            let blockPossibleWin = logicModel.blockWin(patterns: winPatterns)
+            if (blockPossibleWin != -1) { return blockPossibleWin }
+            
+            // If there's no win to be blocked, then pick the middle square
+            let middleSquare = logicModel.pickMiddleSquare()
+            if (middleSquare != -1) { return middleSquare }
             
             // If AI can't pick middle square, then pick a random square
             return easyMode()
         }
         
         func hardMode() -> Int {
-            // Win variables
-            let computerMoves = moves.compactMap { $0 }.filter { $0.player == .computer }
-            let computerPositions = Set(computerMoves.map { $0.boardIndex })
+            // If AI can win, then win the game
+            let winGame = logicModel.winGame(patterns: winPatterns)
+            if (winGame != -1) { return winGame }
             
-            // Block variables
-            let humanMoves = moves.compactMap { $0 }.filter { $0.player == .human }
-            let humanPositions = Set(humanMoves.map { $0.boardIndex })
-            
-            for pattern in winPatterns {
-                let winPositions = pattern.subtracting(computerPositions)
-                let blockPositions = pattern.subtracting(humanPositions)
-                
-                if winPositions.count == 1 {
-                    // If AI can win, then win
-                    let isAvailable = !isSquareOccupied(in: moves, forIndex: winPositions.first!)
-                    if isAvailable { return winPositions.first! }
-                } else if blockPositions.count == 1 {
-                    // If AI can't win, then block
-                    let isBlockable = !isSquareOccupied(in: moves, forIndex: blockPositions.first!)
-                    if isBlockable { return blockPositions.first! }
-                }
-            }
-            
-            // If AI can't win and can't block, then try pick middle square
+            // If AI can't win the game, then block a possible win
             return mediumMode()
+        }
+        
+        func impossibleMode() -> Int {
+            // If AI can win, then win the game
+            let winGame = logicModel.winGame(patterns: winPatterns)
+            if (winGame != -1) { return winGame }
+            
+            // If AI can't win the game, then block a possible win
+            let blockPossibleWin = logicModel.blockWin(patterns: winPatterns)
+            if (blockPossibleWin != -1) { return blockPossibleWin }
+            
+            // If there's no win to be blocked, then pick the middle square
+            let middleSquare = logicModel.pickMiddleSquare()
+            if (middleSquare != -1) { return middleSquare }
+            
+            // If AI can't pick middle square because is yours, then pick a square above the middle
+            let secondSquare = 1 // 1 is the second square in array [0, 1, 2...]
+            if moves.contains(where: { $0?.boardIndex == 4 && $0?.player == .computer }) { return secondSquare }
+            
+            // If AI can't pick middle square because is not yours, then pick a corner square
+            let cornerSquare = logicModel.pickCornerSquare()
+            if (cornerSquare != -1) { return cornerSquare }
+            
+            // If AI can't pick corner square, then pick a random square
+            return easyMode()
         }
         
         switch(selectedLevelIndex) {
@@ -118,6 +120,8 @@ final class VersusAIViewModel: ObservableObject {
                 movePosition = mediumMode()
             case 2:
                 movePosition = hardMode()
+            case 3:
+                movePosition = impossibleMode()
             default:
                 print("Something is wrong")
         }
