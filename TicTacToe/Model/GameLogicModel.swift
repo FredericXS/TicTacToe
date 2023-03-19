@@ -44,6 +44,17 @@ struct GameLogicModel {
         return -1
     }
     
+    func pickSecondSquare() -> Int {
+        let secondSquare = 1 // 1 is the second square in array [0, 1, 2...]
+        if !aiVM.isSquareOccupied(in: moves, forIndex: secondSquare) {
+            if moves.contains(where: { $0?.boardIndex == 4 && $0?.player == .computer }) {
+                return secondSquare
+            }
+        }
+        
+        return -1
+    }
+    
     func pickCornerSquare() -> Int {
         let corners: [Int] = [0, 2, 6, 8]
         for corner in corners {

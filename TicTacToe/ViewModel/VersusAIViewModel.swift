@@ -102,8 +102,8 @@ final class VersusAIViewModel: ObservableObject {
             if (middleSquare != -1) { return middleSquare }
             
             // If AI can't pick middle square because is yours, then pick a square above the middle
-            let secondSquare = 1 // 1 is the second square in array [0, 1, 2...]
-            if moves.contains(where: { $0?.boardIndex == 4 && $0?.player == .computer }) { return secondSquare }
+            let secondSquare = logicModel.pickMiddleSquare()
+            if (secondSquare != -1) { return secondSquare }
             
             // If AI can't pick middle square because is not yours, then pick a corner square
             let cornerSquare = logicModel.pickCornerSquare()
